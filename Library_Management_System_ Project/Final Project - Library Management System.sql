@@ -1,4 +1,4 @@
-
+USE LibraryManagementSystem
 
 /***********************************************************
 	The creation of each of table
@@ -13,37 +13,37 @@ CREATE TABLE tbl_library_branch (
 CREATE TABLE tbl_books (
 	book_id INT PRIMARY KEY NOT NULL IDENTITY (101,1),
 	book_title VARCHAR(50) NOT NULL,
-	publisher_name VARCHAR(50) NOT NULL 
+	publisher_name VARCHAR(50) NOT NULL CONSTRAINT fk_publisher_name FOREIGN KEY REFERENCES tbl_publisher(publisher_name) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE tbl_book_authors (
-	book_id INT NOT NULL,
+	book_id INT NOT NULL CONSTRAINT fk_book_id FOREIGN KEY REFERENCES tbl_books(book_id) ON UPDATE CASCADE ON DELETE CASCADE,
 	author_name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE tbl_book_copies (
-	book_id INT NOT NULL,
-	branch_id INT NOT NULL,
+	book_id INT NOT NULL CONSTRAINT fk_book_id FOREIGN KEY REFERENCES tbl_books(book_id) ON UPDATE CASCADE ON DELETE CASCADE,
+	branch_id INT NOT NULL CONSTRAINT fk_branch_id FOREIGN KEY REFERENCES tbl_library_branch(branch_id) ON UPDATE CASCADE ON DELETE CASCADE,
 	number_of_copies INT NOT NULL
 );
 
 CREATE TABLE tbl_publisher (
-	publisher_name VARCHAR PRIMARY KEY NOT NULL,
+	publisher_name VARCHAR(50) PRIMARY KEY NOT NULL,
 	publisher_address VARCHAR(50) NOT NULL,
 	publisher_phone VARCHAR(50) NOT NULL 
 );
 
 CREATE TABLE tbl_borrower (
-	card_number INT PRIMARY KEY NOT NULL IDENTITY (1,1),
+	card_number INT PRIMARY KEY NOT NULL IDENTITY (500001,1),
 	borrower_name VARCHAR(50) NOT NULL,
 	borrower_address VARCHAR(50) NOT NULL,
 	borrower_phone VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE tbl_book_loans (
-	book_id INT NOT NULL,
-	branch_id INT NOT NULL,
-	card_number INT NOT NULL,
+	book_id INT NOT NULL CONSTRAINT fk_book_id FOREIGN KEY REFERENCES tbl_books(book_id) ON UPDATE CASCADE ON DELETE CASCADE,
+	branch_id INT NOT NULL CONSTRAINT fk_branch_id FOREIGN KEY REFERENCES tbl_library_branch(branch_id) ON UPDATE CASCADE ON DELETE CASCADE,
+	card_number INT NOT NULL CONSTRAINT fk_card_number FOREIGN KEY REFERENCES tbl_borrower(card_number) ON UPDATE CASCADE ON DELETE CASCADE,
 	date_out DATE NOT NULL,
 	date_due_ DATE NOT NULL
 );
@@ -171,3 +171,23 @@ INSERT INTO tbl_publisher
 	('Viking Press', 'New York, New York', 'N/A'),
 	('Doubleday', '1745 Broadway New York, NY 10019', 'N/A')
 ;
+
+INSERT INTO tbl_borrower
+	(borrower_name, borrower_address, borrower phone)
+	VALUE
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+	('', '', ''),
+;
+
+INSERT INTO tbl_book_loans
+	(

@@ -335,6 +335,7 @@ SELECT * FROM tbl_borrower;
 INSERT INTO tbl_book_loans
 	(book_id, branch_id, card_number, date_out, date_due)
 	VALUES
+	--Saul Spinney(12)
 	(101, 1, 500001, '2019-01-01', '2019-01-07'),
 	(102, 1, 500001, '2019-01-07', '2019-01-14'),
 	(103, 2, 500001, '2019-01-14', '2019-01-21'),
@@ -348,6 +349,7 @@ INSERT INTO tbl_book_loans
 	(111, 6, 500001, '2019-03-11', '2019-03-18'),
 	(112, 6, 500001, '2019-03-18', '2019-03-25'),
 
+	--Millicent Mick(12)
 	(101, 1, 500002, '2019-01-01', '2019-01-07'),
 	(102, 1, 500002, '2019-01-07', '2019-01-14'),
 	(103, 2, 500002, '2019-01-14', '2019-01-21'),
@@ -361,6 +363,7 @@ INSERT INTO tbl_book_loans
 	(111, 6, 500002, '2019-03-11', '2019-03-18'),
 	(112, 6, 500002, '2019-03-18', '2019-03-25'),
 
+	--Trula Teran(12)
 	(107, 4, 500003, '2019-01-01', '2019-01-07'),
 	(108, 4, 500003, '2019-01-07', '2019-01-14'),
 	(109, 5, 500003, '2019-01-14', '2019-01-21'),
@@ -374,6 +377,7 @@ INSERT INTO tbl_book_loans
 	(105, 3, 500003, '2019-03-11', '2019-03-18'),
 	(106, 3, 500003, '2019-03-18', '2019-03-25'),
 
+	--Jeremiah Joiner(12)
 	(107, 4, 500004, '2019-01-01', '2019-01-07'),
 	(108, 4, 500004, '2019-01-07', '2019-01-14'),
 	(109, 5, 500004, '2019-01-14', '2019-01-21'),
@@ -387,16 +391,19 @@ INSERT INTO tbl_book_loans
 	(105, 3, 500004, '2019-03-11', '2019-03-18'),
 	(106, 3, 500004, '2019-03-18', '2019-03-25'),
 
+	--Bradley Blosser(3), Tracie Torbert(3)
 	(113, 1, 500005, '2019-04-01', '2019-04-08'),
 	(114, 1, 500005, '2019-04-08', '2019-04-15'),
 	(115, 2, 500005, '2019-04-15', '2019-04-22'),
-	(116, 2, 500006, '2019-04-22', '2019-04-29'), --today
+	(116, 2, 500006, '2019-04-22', '2019-04-29'), --today 4/29/18
 	(117, 3, 500006, '2019-04-29', '2019-05-06'),
-
 	(113, 1, 500006, '2019-04-01', '2019-04-08'),
+
+	--Shanon Southern(3),
 	(114, 1, 500007, '2019-04-08', '2019-04-15'),
 	(115, 2, 500007, '2019-04-15', '2019-04-22'),
-	(116, 2, 500007, '2019-04-22', '2019-04-29'), --today
+	(116, 2, 500007, '2019-04-22', '2019-04-29'),--today 4/29/18
+	--Wesley Waldner
 	(117, 3, 500008, '2019-04-29', '2019-05-06')
 ;
 
@@ -429,7 +436,7 @@ CREATE STORED PROCEDURES THAT WILL QUERY FOR EACH OF THE FOLLOWING QUESTIONS:
 	owned by the library branch whose name is "Central".
 */
 
-
+------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 1.) How many copies of the book titled "The Lost Tribe" are owned by the library branch whose name is "Sharpstown"?
 
@@ -445,6 +452,7 @@ SELECT
 -- Stored Procedure
 EXEC spNumber1
 
+------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 2.) How many copies of the book titled "The Lost Tribe" are owned by each library branch?
 
@@ -460,6 +468,8 @@ SELECT
 -- Stored Procedure
 EXEC spNumber2
 	
+------------------------------------------------------------------------------------------------------------------------------------------
+
 -- 3.) Retrieve the names of all borrowers who do not have any books checked out.
 
 CREATE PROCEDURE spNumber3
@@ -472,6 +482,8 @@ SELECT
 
 -- Stored Procedure
 EXEC spNumber3
+
+------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
 4.) For each book that is loaned out from the "Sharpstown" branch and whose DueDate is today, retrieve 
@@ -491,4 +503,52 @@ SELECT
 -- Stored Procedure
 EXEC spNumber4
 
+------------------------------------------------------------------------------------------------------------------------------------------
+
 -- 5.) For each library branch, retrieve the branch name and the total number of books loaned out from that branch.
+
+--After running my qury below, my goal was to count the records and get the count by grouping each record by the branch name
+SELECT *
+	FROM tbl_library_branch a
+	INNER JOIN tbl_book_loans b ON a.branch_id = b.branch_id
+
+CREATE PROCEDURE spNumber5
+AS
+SELECT 
+	a.branch_name, COUNT(*) AS books_loaned_out
+	FROM tbl_library_branch a
+	INNER JOIN tbl_book_loans b ON a.branch_id = b.branch_id
+	GROUP BY branch_name
+
+-- Stored Procedure
+EXEC spNumber5
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+-- 6.) Retrieve the names, addresses, and the number of books checked out for all borrowers who have more than five books checked out.
+
+SELECT *
+	FROM tbl_borrower a
+	INNER JOIN tbl_book_loans b ON a.card_number = b.card_number
+
+CREATE PROCEDURE spNumber6
+AS
+SELECT
+	a.borrower_name, a.borrower_address, a.borrower_phone, COUNT(*) AS books_loaned_out
+	FROM tbl_borrower a
+	INNER JOIN tbl_book_loans b ON a.card_number = b.card_number
+	GROUP BY a.borrower_name, a.borrower_address, a.borrower_phone
+	HAVING COUNT(*) > 5
+
+-- Stored Procedure
+EXEC spNumber6
+
+------------------------------------------------------------------------------------------------------------------------------------------
+/*
+7.) For each book authored (or co-authored) by "Stephen King", retrieve the title and the number of copies 
+	owned by the library branch whose name is "Central".
+*/
+
+
+
+

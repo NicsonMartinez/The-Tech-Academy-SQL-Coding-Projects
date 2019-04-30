@@ -55,7 +55,7 @@ CREATE TABLE tbl_book_loans (
 );
 
 /***********************************************************
-	The creation of each of table
+	The inserting of data into the created tables
  ************************************************************/
 
  INSERT INTO tbl_library_branch
@@ -177,18 +177,142 @@ INSERT INTO tbl_book_copies
 	(114, 1, 2),
 	(115, 2, 5),
 	(116, 2, 7),
-	(117, 3, 1),
+	(117, 3, 2),
 	(118, 3, 3),
 	(119, 4, 9),
 	(120, 4, 11),
 	(121, 5, 5),
 	(122, 5, 3),
 	(123, 6, 8),
-	(124, 6, 10)
+	(124, 6, 10),
+
+	(101, 2, 2),
+	(102, 2, 5),
+	(103, 3, 6),
+	(104, 3, 9),
+	(105, 4, 10),
+	(106, 4, 8),
+	(107, 5, 9),
+	(108, 5, 3),
+	(109, 6, 8),
+	(110, 6, 4),
+	(111, 1, 9),
+	(112, 1, 6),
+	(113, 2, 10),
+	(114, 2, 2),
+	(115, 3, 5),
+	(116, 3, 7),
+	(117, 4, 2),
+	(118, 4, 3),
+	(119, 5, 9),
+	(120, 5, 11),
+	(121, 6, 2),
+	(122, 6, 3),
+	(123, 1, 8),
+	(124, 1, 10),
+
+	(101, 3, 2),
+	(102, 3, 5),
+	(103, 4, 6),
+	(104, 4, 9),
+	(105, 5, 10),
+	(106, 5, 8),
+	(107, 6, 9),
+	(108, 6, 3),
+	(109, 1, 8),
+	(110, 1, 4),
+	(111, 2, 9),
+	(112, 2, 6),
+	(113, 3, 10),
+	(114, 3, 2),
+	(115, 4, 5),
+	(116, 4, 7),
+	(117, 5, 2),
+	(118, 5, 3),
+	(119, 6, 9),
+	(120, 6, 11),
+	(121, 1, 10),
+	(122, 1, 3),
+	(123, 2, 8),
+	(124, 2, 10),
+
+	(101, 4, 2),
+	(102, 4, 5),
+	(103, 5, 6),
+	(104, 5, 9),
+	(105, 6, 10),
+	(106, 6, 8),
+	(107, 1, 9),
+	(108, 1, 3),
+	(109, 2, 8),
+	(110, 2, 4),
+	(111, 3, 9),
+	(112, 3, 6),
+	(113, 4, 10),
+	(114, 4, 2),
+	(115, 5, 5),
+	(116, 5, 7),
+	(117, 6, 2),
+	(118, 6, 3),
+	(119, 1, 9),
+	(120, 1, 11),
+	(121, 2, 8),
+	(122, 2, 3),
+	(123, 3, 8),
+	(124, 3, 10),
+
+	(101, 5, 2),
+	(102, 5, 5),
+	(103, 6, 6),
+	(104, 6, 9),
+	(105, 1, 10),
+	(106, 1, 8),
+	(107, 2, 9),
+	(108, 2, 3),
+	(109, 3, 8),
+	(110, 3, 4),
+	(111, 4, 9),
+	(112, 4, 6),
+	(113, 5, 10),
+	(114, 5, 2),
+	(115, 6, 5),
+	(116, 6, 7),
+	(117, 1, 2),
+	(118, 1, 3),
+	(119, 2, 9),
+	(120, 2, 11),
+	(121, 3, 2),
+	(122, 3, 3),
+	(123, 4, 8),
+	(124, 4, 10),
+
+	(101, 6, 2),
+	(102, 6, 5),
+	(103, 1, 6),
+	(104, 1, 9),
+	(105, 2, 10),
+	(106, 2, 8),
+	(107, 3, 9),
+	(108, 3, 3),
+	(109, 4, 8),
+	(110, 4, 4),
+	(111, 5, 9),
+	(112, 5, 6),
+	(113, 6, 10),
+	(114, 6, 2),
+	(115, 1, 5),
+	(116, 1, 7),
+	(117, 2, 2),
+	(118, 2, 3),
+	(119, 3, 9),
+	(120, 3, 11),
+	(121, 4, 4),
+	(122, 4, 3),
+	(123, 5, 8),
+	(124, 5, 10)
 ;
 
 SELECT * FROM tbl_book_copies;
-
 
 
 INSERT INTO tbl_borrower
@@ -208,14 +332,163 @@ INSERT INTO tbl_borrower
 
 SELECT * FROM tbl_borrower;
 
-
 INSERT INTO tbl_book_loans
 	(book_id, branch_id, card_number, date_out, date_due)
 	VALUES
-	(, , , , ),
-	(, , , , ),
-	(, , , , ),
-	(, , , , ),
-	(, , , , ),
-	(, , , , ),
+	(101, 1, 500001, '2019-01-01', '2019-01-07'),
+	(102, 1, 500001, '2019-01-07', '2019-01-14'),
+	(103, 2, 500001, '2019-01-14', '2019-01-21'),
+	(104, 2, 500001, '2019-01-21', '2019-01-28'),
+	(105, 3, 500001, '2019-01-28', '2019-02-04'),
+	(106, 3, 500001, '2019-02-04', '2019-02-11'),
+	(107, 4, 500001, '2019-02-11', '2019-02-18'),
+	(108, 4, 500001, '2019-02-18', '2019-02-25'),
+	(109, 5, 500001, '2019-02-25', '2019-03-04'),
+	(110, 5, 500001, '2019-03-04', '2019-03-11'),
+	(111, 6, 500001, '2019-03-11', '2019-03-18'),
+	(112, 6, 500001, '2019-03-18', '2019-03-25'),
+
+	(101, 1, 500002, '2019-01-01', '2019-01-07'),
+	(102, 1, 500002, '2019-01-07', '2019-01-14'),
+	(103, 2, 500002, '2019-01-14', '2019-01-21'),
+	(104, 2, 500002, '2019-01-21', '2019-01-28'),
+	(105, 3, 500002, '2019-01-28', '2019-02-04'),
+	(106, 3, 500002, '2019-02-04', '2019-02-11'),
+	(107, 4, 500002, '2019-02-11', '2019-02-18'),
+	(108, 4, 500002, '2019-02-18', '2019-02-25'),
+	(109, 5, 500002, '2019-02-25', '2019-03-04'),
+	(110, 5, 500002, '2019-03-04', '2019-03-11'),
+	(111, 6, 500002, '2019-03-11', '2019-03-18'),
+	(112, 6, 500002, '2019-03-18', '2019-03-25'),
+
+	(107, 4, 500003, '2019-01-01', '2019-01-07'),
+	(108, 4, 500003, '2019-01-07', '2019-01-14'),
+	(109, 5, 500003, '2019-01-14', '2019-01-21'),
+	(110, 5, 500003, '2019-01-21', '2019-01-28'),
+	(111, 6, 500003, '2019-01-28', '2019-02-04'),
+	(112, 6, 500003, '2019-02-04', '2019-02-11'),
+	(101, 1, 500003, '2019-02-11', '2019-02-18'),
+	(102, 1, 500003, '2019-02-18', '2019-02-25'),
+	(103, 2, 500003, '2019-02-25', '2019-03-04'),
+	(104, 2, 500003, '2019-03-04', '2019-03-11'),
+	(105, 3, 500003, '2019-03-11', '2019-03-18'),
+	(106, 3, 500003, '2019-03-18', '2019-03-25'),
+
+	(107, 4, 500004, '2019-01-01', '2019-01-07'),
+	(108, 4, 500004, '2019-01-07', '2019-01-14'),
+	(109, 5, 500004, '2019-01-14', '2019-01-21'),
+	(110, 5, 500004, '2019-01-21', '2019-01-28'),
+	(111, 6, 500004, '2019-01-28', '2019-02-04'),
+	(112, 6, 500004, '2019-02-04', '2019-02-11'),
+	(101, 1, 500004, '2019-02-11', '2019-02-18'),
+	(102, 1, 500004, '2019-02-18', '2019-02-25'),
+	(103, 2, 500004, '2019-02-25', '2019-03-04'),
+	(104, 2, 500004, '2019-03-04', '2019-03-11'),
+	(105, 3, 500004, '2019-03-11', '2019-03-18'),
+	(106, 3, 500004, '2019-03-18', '2019-03-25'),
+
+	(113, 1, 500005, '2019-04-01', '2019-04-08'),
+	(114, 1, 500005, '2019-04-08', '2019-04-15'),
+	(115, 2, 500005, '2019-04-15', '2019-04-22'),
+	(116, 2, 500006, '2019-04-22', '2019-04-29'), --today
+	(117, 3, 500006, '2019-04-29', '2019-05-06'),
+
+	(113, 1, 500006, '2019-04-01', '2019-04-08'),
+	(114, 1, 500007, '2019-04-08', '2019-04-15'),
+	(115, 2, 500007, '2019-04-15', '2019-04-22'),
+	(116, 2, 500007, '2019-04-22', '2019-04-29'), --today
+	(117, 3, 500008, '2019-04-29', '2019-05-06')
 ;
+
+SELECT * FROM tbl_book_loans;
+
+/***********************************************************************
+	creation of stored procedures that will query for specific data
+ ***********************************************************************/
+ 
+/*
+CREATE STORED PROCEDURES THAT WILL QUERY FOR EACH OF THE FOLLOWING QUESTIONS:
+
+1.) How many copies of the book titled "The Lost Tribe" are owned by the library branch whose name 
+	is "Sharpstown"?
+
+2.) How many copies of the book titled "The Lost Tribe" are owned by each library branch?
+
+3.) Retrieve the names of all borrowers who do not have any books checked out.
+
+4.) For each book that is loaned out from the "Sharpstown" branch and whose DueDate is today, retrieve 
+	the book title, the borrower's name, and the borrower's address.
+
+5.) For each library branch, retrieve the branch name and the total number of books loaned out from 
+	that branch.
+
+6.) Retrieve the names, addresses, and the number of books checked out for all borrowers who have more 
+	than five books checked out.
+
+7.) For each book authored (or co-authored) by "Stephen King", retrieve the title and the number of copies 
+	owned by the library branch whose name is "Central".
+*/
+
+
+
+-- 1.) How many copies of the book titled "The Lost Tribe" are owned by the library branch whose name is "Sharpstown"?
+
+CREATE PROCEDURE spNumber1
+AS
+SELECT
+	a.book_id, b.book_title, c.branch_name, a.number_of_copies
+	FROM tbl_book_copies a
+	INNER JOIN tbl_books b ON a.book_id = b.book_id
+	INNER JOIN tbl_library_branch c ON a.branch_id = c.branch_id
+	WHERE book_title = 'The Lost Tribe' AND branch_name = 'Sharpstown';
+
+-- Stored Procedure
+EXEC spNumber1
+
+
+-- 2.) How many copies of the book titled "The Lost Tribe" are owned by each library branch?
+
+CREATE PROCEDURE spNumber2
+AS
+SELECT
+	a.book_id, b.book_title, c.branch_name, a.number_of_copies
+	FROM tbl_book_copies a
+	INNER JOIN tbl_books b ON a.book_id = b.book_id
+	INNER JOIN tbl_library_branch c ON a.branch_id = c.branch_id
+	WHERE a.book_id = 121 AND book_title = 'The Lost Tribe'
+
+-- Stored Procedure
+EXEC spNumber2
+	
+-- 3.) Retrieve the names of all borrowers who do not have any books checked out.
+
+CREATE PROCEDURE spNumber3
+AS
+SELECT 
+	a.card_number, a.borrower_name, a.borrower_address, a.borrower_phone
+	FROM tbl_borrower a
+	LEFT OUTER JOIN tbl_book_loans b ON a.card_number = b.card_number
+	WHERE b.book_id IS NULL
+
+-- Stored Procedure
+EXEC spNumber3
+
+/*
+4.) For each book that is loaned out from the "Sharpstown" branch and whose DueDate is today, retrieve 
+	the book title, the borrower's name, and the borrower's address.
+*/
+
+CREATE PROCEDURE spNumber4
+AS
+SELECT 
+	c.book_title, a.borrower_name, a.borrower_address
+	FROM tbl_borrower a
+	INNER JOIN tbl_book_loans b ON a.card_number = b.card_number
+	INNER JOIN tbl_books c ON b.book_id = c.book_id
+	INNER JOIN tbl_library_branch ON b.branch_id = b.branch_id
+	WHERE branch_name = 'Sharpstown' AND date_due = '2019-04-29'
+
+-- Stored Procedure
+EXEC spNumber4
+
+-- 5.) For each library branch, retrieve the branch name and the total number of books loaned out from that branch.

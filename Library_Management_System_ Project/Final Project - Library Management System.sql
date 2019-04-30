@@ -1,8 +1,38 @@
-USE LibraryManagementSystem
+/*
+By Nicson Maritnez
+Date: 4/29/2019
+
+FINAL PROJECT - LIBRARY MANAGEMENT SYSTEM
+
+*/
+
+/*
+YOU MAY CHOOSE YOUR OWN DATA TO POPULATE YOUR TABLES AS LONG AS YOUR DATABASE ENSURES THAT THE FOLLOWING CONDITIONS ARE TRUE:
+
+There is a book called 'The Lost Tribe' found in the 'Sharpstown' branch.
+
+There is a library branch called 'Sharpstown' and one called 'Central'.
+
+There are at least 20 books in the BOOK table.
+
+There are at least 10 authors in the BOOK_AUTHORS table.
+
+Each library branch has at least 10 book titles, and at least two copies of each of those titles.
+
+There are at least 8 borrowers in the BORROWER table, and at least 2 of those borrowers have more than 5 books loaned to them.
+
+There are at least 4 branches in the LIBRARY_BRANCH table.
+
+There are at least 50 loans in the BOOK_LOANS table.
+
+There must be at least two books written by 'Stephen King' located at the 'Central' branch.
+*/
+
 
 /***********************************************************
 	The creation of each of table
  ************************************************************/
+ USE LibraryManagementSystem
 
 CREATE TABLE tbl_library_branch (
 	branch_id INT PRIMARY KEY NOT NULL IDENTITY (1,1),
@@ -402,7 +432,8 @@ INSERT INTO tbl_book_loans
 	--Shanon Southern(3),
 	(114, 1, 500007, '2019-04-08', '2019-04-15'),
 	(115, 2, 500007, '2019-04-15', '2019-04-22'),
-	(116, 2, 500007, '2019-04-22', '2019-04-29'),--today 4/29/18
+	(116, 2, 500007, '2019-04-22', '2019-04-29'), --today 4/29/18
+
 	--Wesley Waldner
 	(117, 3, 500008, '2019-04-29', '2019-05-06')
 ;
@@ -549,6 +580,18 @@ EXEC spNumber6
 	owned by the library branch whose name is "Central".
 */
 
+CREATE PROCEDURE spNumber7
+AS
+SELECT
+	a.book_title, c.number_of_copies
+	FROM tbl_books a 
+	INNER JOIN tbl_book_authors b ON a.book_id = b.book_id
+	INNER JOIN tbl_book_copies c ON b.book_id = c.book_id
+	INNER JOIN tbl_library_branch d ON c.branch_id = d.branch_id
+	WHERE b.author_name = 'Stephen King' AND branch_name = 'Central'
+
+-- Stored Procedure
+EXEC spNumber7
 
 
 

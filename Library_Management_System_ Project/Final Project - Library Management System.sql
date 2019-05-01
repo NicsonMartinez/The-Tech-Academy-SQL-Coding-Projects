@@ -425,14 +425,14 @@ INSERT INTO tbl_book_loans
 	(113, 1, 500005, '2019-04-01', '2019-04-08'),
 	(114, 1, 500005, '2019-04-08', '2019-04-15'),
 	(115, 2, 500005, '2019-04-15', '2019-04-22'),
-	(116, 2, 500006, '2019-04-22', '2019-04-29'), --today 4/29/18
+	(116, 5, 500006, '2019-04-22', '2019-04-29'), --today 4/29/18
 	(117, 3, 500006, '2019-04-29', '2019-05-06'),
 	(113, 1, 500006, '2019-04-01', '2019-04-08'),
 
 	--Shanon Southern(3),
 	(114, 1, 500007, '2019-04-08', '2019-04-15'),
 	(115, 2, 500007, '2019-04-15', '2019-04-22'),
-	(116, 2, 500007, '2019-04-22', '2019-04-29'), --today 4/29/18
+	(116, 5, 500007, '2019-04-22', '2019-04-29'), --today 4/29/18
 
 	--Wesley Waldner
 	(117, 3, 500008, '2019-04-29', '2019-05-06')
@@ -523,16 +523,17 @@ EXEC spNumber3
 
 CREATE PROCEDURE spNumber4
 AS
-SELECT 
+SELECT
 	c.book_title, a.borrower_name, a.borrower_address
 	FROM tbl_borrower a
 	INNER JOIN tbl_book_loans b ON a.card_number = b.card_number
 	INNER JOIN tbl_books c ON b.book_id = c.book_id
-	INNER JOIN tbl_library_branch ON b.branch_id = b.branch_id
+	INNER JOIN tbl_library_branch d ON b.branch_id = d.branch_id
 	WHERE branch_name = 'Sharpstown' AND date_due = '2019-04-29'
 
 -- Stored Procedure
 EXEC spNumber4
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
